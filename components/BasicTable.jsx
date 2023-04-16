@@ -13,6 +13,7 @@ import Box from "@mui/material/Box";
 
 import ModalDetails from "./ModalDetails";
 import { getStatus } from "../utils/commonFunctions";
+import StatusTag from "./StatusTag";
 
 const style = {
   position: "absolute",
@@ -74,7 +75,9 @@ export default function BasicTable({ launchDetails = [], loading }) {
                 <TableCell>
                   {launchDetail.rocket.second_stage?.payloads[0].orbit}
                 </TableCell>
-                <TableCell>{getStatus(launchDetail)}</TableCell>
+                <TableCell>
+                  <StatusTag status={getStatus(launchDetail)} />
+                </TableCell>
                 <TableCell>{launchDetail.rocket.rocket_name}</TableCell>
               </TableRow>
             ))}

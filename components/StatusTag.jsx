@@ -13,9 +13,9 @@ const Container = styled.div`
   text-align: center;
   font-size: 14px;
   font-weight: 600;
-  padding: 8px;
-  height: 30px;
+  padding: 4px;
   margin-left: ${({ marginLeft }) => marginLeft && marginLeft};
+  width: 100px;
 `;
 
 const Text = styled.span`
