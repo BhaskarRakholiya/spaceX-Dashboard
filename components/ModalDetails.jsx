@@ -38,9 +38,11 @@ const Model = styled.div`
 const Links = styled.div`
   margin: 8px;
   display: flex;
+  align-items: center;
 `;
 
 const Icon = styled.img`
+  width: 20px;
   margin-left: ${({ margin }) => margin && margin};
 `;
 
