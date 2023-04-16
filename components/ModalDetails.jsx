@@ -115,9 +115,6 @@ export default function ModalDetails({ launchModalDetails }) {
         {wikiPost && (
           <DetailsContainer>
             <div dangerouslySetInnerHTML={{ __html: wikiPost }} />
-            <Link href={launchModalDetails.links?.wikipedia} target="_blank">
-              wikipedia
-            </Link>
           </DetailsContainer>
         )}
         <DetailsRow

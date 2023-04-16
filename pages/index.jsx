@@ -46,16 +46,16 @@ export default function Home() {
     if (!router.isReady) {
       return;
     } else {
+      setLoading(true);
       const filterValue = router.query?.selectedValue || SELECT_OPTIONS.ALL;
       setSelectedLaunch(filterValue);
-      setLoading(true);
       axios.get(getLaunchApi).then((response) => {
         setLaunchDetails({
           filtered: getFilteredListItem(response.data, filterValue),
           all: response.data,
         });
+        setLoading(false);
       });
-      setLoading(false);
     }
   }, [router.isReady]);
 

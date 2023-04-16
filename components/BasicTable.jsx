@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DateTime } from "luxon";
+import styled from "styled-components";
 
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -14,6 +15,7 @@ import Box from "@mui/material/Box";
 import ModalDetails from "./ModalDetails";
 import { getStatus } from "../utils/commonFunctions";
 import StatusTag from "./StatusTag";
+import Loader from "./Loader";
 
 const style = {
   position: "absolute",
@@ -27,6 +29,16 @@ const style = {
   borderRadius: "8px",
   overflow: "auto",
 };
+
+const EmptyTable = styled.div`
+  height: 70vh;
+  text-align: center;
+  width: 100%;
+  padding: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export default function BasicTable({ launchDetails = [], loading }) {
   const [open, setOpen] = useState(false);
@@ -83,6 +95,15 @@ export default function BasicTable({ launchDetails = [], loading }) {
             ))}
         </TableBody>
       </Table>
+      {!loading && !launchDetails.length && (
+        <EmptyTable>no results Found </EmptyTable>
+      )}
+      {loading && (
+        <EmptyTable>
+          <Loader />
+        </EmptyTable>
+      )}
+
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
           <ModalDetails launchModalDetails={selectedLaunchModal} />
